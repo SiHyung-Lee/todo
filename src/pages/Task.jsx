@@ -1,5 +1,6 @@
 import TaskList from "../components/TaskList";
 import TaskInput from "../components/TaskInput.jsx";
+import { useState } from "react";
 
 const tasks = [
   {
@@ -20,10 +21,17 @@ const tasks = [
 ];
 
 const Task = () => {
+  const [tasks, setTasks] = useState([]);
+  const [newTask, setNewTask] = useState();
+  const addTask = (title) => {
+    setNewTask(title);
+  };
+
   return (
     <>
       <h2>Tasks</h2>
-      <TaskInput />
+      <p>You have {task} tasks</p>
+      <TaskInput addTask={addTask} />
       <TaskList tasks={tasks} />
     </>
   );

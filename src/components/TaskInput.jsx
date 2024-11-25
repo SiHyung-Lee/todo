@@ -1,13 +1,16 @@
 import { useState } from "react";
 
-const TaskInput = () => {
+const TaskInput = ({ addTask }) => {
   const [value, setValue] = useState("");
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
 
-  const handleSubmit = (event) => {};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addTask(value);
+  };
 
   return (
     <form onSubmit={handleSubmit}>
