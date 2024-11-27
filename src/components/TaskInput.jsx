@@ -9,7 +9,8 @@ const TaskInput = ({ addTask }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addTask(value);
+    addTask({ id: new Date(), title: value, completed: false });
+    setValue("");
   };
 
   return (
@@ -19,8 +20,11 @@ const TaskInput = ({ addTask }) => {
         placeholder="Add a task"
         onChange={handleChange}
         value={value}
+        className="border"
       />
-      <button type="submit">Add</button>
+      <button type="submit" className="border bg-black text-white">
+        Add
+      </button>
     </form>
   );
 };
