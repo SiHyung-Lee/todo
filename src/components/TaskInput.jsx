@@ -9,7 +9,13 @@ const TaskInput = ({ addTask }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addTask({ id: new Date(), title: value, completed: false });
+    const nowDate = new Date()
+      .toISOString()
+      .slice(0, 23)
+      .replace("T", "_")
+      .replace(/[-:]/g, "")
+      .replace(".", "_");
+    addTask({ id: nowDate, text: value, completed: false });
     setValue("");
   };
 
@@ -22,8 +28,10 @@ const TaskInput = ({ addTask }) => {
         value={value}
         className="border"
       />
-      <button type="submit" className="border bg-black text-white">
-        Add
+      <button
+        type="submit"
+        className="border bg-black text-white">
+        추가
       </button>
     </form>
   );
