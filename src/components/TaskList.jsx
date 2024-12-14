@@ -2,7 +2,7 @@ import TaskItem from "./TaskItem.jsx";
 
 const TaskList = ({ tasks, deleteTask }) => {
   return (
-    <>
+    <div className="tasks">
       {tasks.map((task) => (
         <TaskItem
           key={task.id}
@@ -10,7 +10,7 @@ const TaskList = ({ tasks, deleteTask }) => {
           deleteTask={deleteTask}
         />
       ))}
-    </>
+    </div>
   );
 };
 

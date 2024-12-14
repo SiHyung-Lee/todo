@@ -20,19 +20,17 @@ const TaskInput = ({ addTask }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="insert-form">
       <input
         type="text"
-        placeholder="Add a task"
+        placeholder="Add your task"
         onChange={handleChange}
         value={value}
         className="border"
       />
-      <button
-        type="submit"
-        className="border bg-black text-white">
-        추가
-      </button>
+      <button type="submit">Add</button>
     </form>
   );
 };

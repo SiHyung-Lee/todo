@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 
 const TaskItem = ({ task: { id, text, completed }, deleteTask }) => {
   const [value, setValue] = useState(completed);
@@ -9,18 +11,18 @@ const TaskItem = ({ task: { id, text, completed }, deleteTask }) => {
     deleteTask(id);
   };
   return (
-    <div>
+    <div className="task">
       <input
         type="checkbox"
         checked={value}
         onChange={handleChange}
       />
-      <span>{text}</span>
-      <button type="button">수정</button>
+      <span className="task-text">{text}</span>
       <button
         type="button"
-        onClick={handleRemoveTask}>
-        삭제
+        onClick={handleRemoveTask}
+        className="task-delete">
+        <FontAwesomeIcon icon={faTrashCan} />
       </button>
     </div>
   );
