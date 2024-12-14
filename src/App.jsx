@@ -5,7 +5,7 @@ import "./App.css";
 const App = () => {
   return (
     <div className="container">
-      {/* <Header /> */}
+      <Header />
       <div className="app-box">
         <Outlet />
       </div>
