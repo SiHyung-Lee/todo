@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header className="header">
-      <h1>My Todo App</h1>
+      <h1>TaskFlow</h1>
       <ul className="gnb">
         <li>
           <Link to={"/"}>Home</Link>

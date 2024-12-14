@@ -18,6 +18,11 @@ const initialTasks = [
     text: "Develop ToDo list app",
     completed: false,
   },
+  {
+    id: 3,
+    text: "Write a weekly business report",
+    completed: false,
+  },
 ];
 
 const Task = () => {
