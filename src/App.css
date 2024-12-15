@@ -146,7 +146,36 @@ body {
 }
 /* //home */
 
-/* task */
+/* task-util */
+.util {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+.select-all input {
+  width: 15px;
+  height: 15px;
+  margin: 0 8px 0 0;
+  vertical-align: middle;
+}
+.select-all span {
+  font-size: 11px;
+}
+.sorting {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 10px;
+}
+.sorting select {
+  height: 26px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-size: 11px;
+}
+/* //task-util */
+
+/* task-form */
 .insert-form {
   position: relative;
   height: 50px;
@@ -186,10 +215,16 @@ body {
 }
 .task {
   position: relative;
+  height: 25px;
   margin-bottom: 10px;
 }
-
-.task input[type="checkbox"] {
+.task button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #64748b;
+}
+.completed-checkbox {
   width: 15px;
   height: 15px;
   margin: 0 8px 0 0;
@@ -197,21 +232,44 @@ body {
 }
 
 .task-text {
+  display: inline-block;
+  width: calc(100% - 100px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 12px;
+  vertical-align: middle;
 }
-.task input[type="checkbox"]:checked + .task-text {
+.completed-checkbox:checked + .task-text {
   text-decoration: line-through;
 }
-.task-delete {
-  position: absolute;
-  right: 0;
-  bottom: 0;
+
+.update-input {
+  height: 25px;
+  width: calc(100% - 100px);
+  padding: 5px 10px;
+  background-color: #eff6ff;
+  border-radius: 13px;
   border: none;
-  background: none;
-  cursor: pointer;
-  color: #64748b;
+  outline: none;
+  font-size: 12px;
 }
-/* //task */
+.task-change,
+.task-delete,
+.task-update {
+  position: absolute;
+  bottom: 0;
+}
+.task-change {
+  right: 25px;
+}
+.task-update {
+  right: 27px;
+}
+.task-delete {
+  right: 0;
+}
+/* //task-form */
 
 /* login */
 .login label {

@@ -34,13 +34,25 @@ const Task = () => {
   const deleteTask = (id) => {
     setTasks((prevList) => prevList.filter((item) => item.id !== id));
   };
-  console.log(tasks);
+
+  const updateTask = (id, updateText) => {
+    setTasks((prevList) =>
+      prevList.map((task) => {
+        if (task.id === id) {
+          return { ...task, text: updateText };
+        }
+        return task;
+      })
+    );
+  };
+
   return (
     <>
       <h2 className="app-title">To-Do List</h2>
       <TaskInput addTask={addTask} />
       <TaskList
         tasks={tasks}
+        updateTask={updateTask}
         deleteTask={deleteTask}
       />
     </>
