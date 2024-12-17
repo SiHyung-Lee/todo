@@ -1,6 +1,6 @@
 import TaskList from "../components/TaskList";
 import TaskInput from "../components/TaskInput.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const initialTasks = [
   {
@@ -27,33 +27,58 @@ const initialTasks = [
 
 const Task = () => {
   const [tasks, setTasks] = useState(initialTasks);
-  const addTask = (newTask) => {
+  const handleAddTask = (newTask) => {
     setTasks([...tasks, newTask]);
   };
 
-  const deleteTask = (id) => {
+  const handleDeleteTask = (id) => {
     setTasks((prevList) => prevList.filter((item) => item.id !== id));
   };
 
-  const updateTask = (id, updateText) => {
+  const handleUpdateTaskText = (id, updateText) => {
     setTasks((prevList) =>
       prevList.map((task) => {
         if (task.id === id) {
           return { ...task, text: updateText };
         }
         return task;
-      })
+      }),
     );
   };
+
+  const handleToggleCompletion = (id) => {
+    setTasks((prevList) =>
+      prevList.map((task) => {
+        if (task.id === id) {
+          return { ...task, completed: !task.completed };
+        }
+        return task;
+      }),
+    );
+  };
+
+  const handleToggleAllCompletion = (isChecked) => {
+    setTasks((prevList) =>
+      prevList.map((task) => {
+        return { ...task, completed: isChecked };
+      }),
+    );
+  };
+
+  useEffect(() => {
+    console.log(tasks);
+  }, [tasks]);
 
   return (
     <>
       <h2 className="app-title">To-Do List</h2>
-      <TaskInput addTask={addTask} />
+      <TaskInput handleAddTask={handleAddTask} />
       <TaskList
         tasks={tasks}
-        updateTask={updateTask}
-        deleteTask={deleteTask}
+        handleUpdateTaskText={handleUpdateTaskText}
+        handleDeleteTask={handleDeleteTask}
+        handleToggleCompletion={handleToggleCompletion}
+        handleToggleAllCompletion={handleToggleAllCompletion}
       />
     </>
   );

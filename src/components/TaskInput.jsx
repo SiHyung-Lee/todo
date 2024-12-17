@@ -1,11 +1,7 @@
 import { useState } from "react";
 
-const TaskInput = ({ addTask }) => {
-  const [value, setValue] = useState("");
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+const TaskInput = ({ handleAddTask }) => {
+  const [value, setvalue] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,18 +11,16 @@ const TaskInput = ({ addTask }) => {
       .replace("T", "_")
       .replace(/[-:]/g, "")
       .replace(".", "_");
-    addTask({ id: nowDate, text: value, completed: false });
-    setValue("");
+    handleAddTask({ id: nowDate, text: value, completed: false });
+    setvalue("");
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="insert-form">
+    <form onSubmit={handleSubmit} className="insert-form">
       <input
         type="text"
         placeholder="Add your task"
-        onChange={handleChange}
+        onChange={(event) => setvalue(event.target.value)}
         value={value}
         className="border"
       />

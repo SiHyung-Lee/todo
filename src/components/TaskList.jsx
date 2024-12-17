@@ -1,11 +1,26 @@
+import { useState } from "react";
 import TaskItem from "./TaskItem.jsx";
 
-const TaskList = ({ tasks, updateTask, deleteTask }) => {
+const TaskList = ({
+  tasks,
+  handleUpdateTaskText,
+  handleDeleteTask,
+  handleToggleCompletion,
+  handleToggleAllCompletion,
+}) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleChange = (event) => {
+    const isChecked = event.target.checked;
+    setIsChecked(isChecked);
+    handleToggleAllCompletion(isChecked);
+  };
+
   return (
     <>
       <div className="util">
         <div className="select-all">
-          <input type="checkbox" />
+          <input type="checkbox" checked={isChecked} onChange={handleChange} />
           <span>4 selected</span>
         </div>
         <div className="sorting">
@@ -20,8 +35,9 @@ const TaskList = ({ tasks, updateTask, deleteTask }) => {
           <TaskItem
             key={task.id}
             task={task}
-            updateTask={updateTask}
-            deleteTask={deleteTask}
+            handleUpdateTaskText={handleUpdateTaskText}
+            handleDeleteTask={handleDeleteTask}
+            handleToggleCompletion={handleToggleCompletion}
           />
         ))}
       </div>

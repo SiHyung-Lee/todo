@@ -8,60 +8,48 @@ import {
 
 const TaskItem = ({
   task: { id, text, completed },
-  updateTask,
-  deleteTask,
+  handleUpdateTaskText,
+  handleDeleteTask,
+  handleToggleCompletion,
 }) => {
-  const [completedValue, setCompletedValue] = useState(completed);
-  const [update, setUpdate] = useState(false);
-  const [value, setValue] = useState(text);
+  const [update, setupdate] = useState(false);
+  const [taskText, setTaskText] = useState(text);
 
-  const changeCompleted = (event) => {
-    setCompletedValue(event.target.checked);
-  };
-  const changeTask = () => {
-    setUpdate(true);
-  };
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-  const handleUpdateTask = () => {
-    updateTask(id, value);
-    setUpdate(false);
-  };
-
-  const handleRemoveTask = () => {
-    deleteTask(id);
-  };
   return (
     <div className="task">
       <input
         type="checkbox"
         className="completed-checkbox"
-        checked={completedValue}
-        onChange={changeCompleted}
+        checked={completed}
+        onChange={() => handleToggleCompletion(id)}
       />
       {update ? (
         <>
           <input
             type="text"
             className="update-input"
-            value={value}
-            onChange={handleChange}
+            value={taskText}
+            onChange={(event) => setTaskText(event.target.value)}
           />
           <button
             type="button"
-            onClick={handleUpdateTask}
-            className="task-update">
+            onClick={() => {
+              handleUpdateTaskText(id, taskText);
+              setupdate(false);
+            }}
+            className="task-update"
+          >
             <FontAwesomeIcon icon={faSquareCheck} />
           </button>
         </>
       ) : (
         <>
-          <span className="task-text">{value}</span>
+          <span className="task-text">{taskText}</span>
           <button
             type="button"
-            onClick={changeTask}
-            className="task-change">
+            onClick={() => setupdate(true)}
+            className="task-change"
+          >
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
         </>
@@ -69,8 +57,9 @@ const TaskItem = ({
 
       <button
         type="button"
-        onClick={handleRemoveTask}
-        className="task-delete">
+        onClick={() => handleDeleteTask(id)}
+        className="task-delete"
+      >
         <FontAwesomeIcon icon={faTrashCan} />
       </button>
     </div>
