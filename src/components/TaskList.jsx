@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskItem from "./TaskItem.jsx";
 
 const TaskList = ({
@@ -9,6 +9,7 @@ const TaskList = ({
   handleToggleAllCompletion,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [totalCompleted, setTotalCompleted] = useState(0);
 
   const handleChange = (event) => {
     const isChecked = event.target.checked;
@@ -16,12 +17,21 @@ const TaskList = ({
     handleToggleAllCompletion(isChecked);
   };
 
+  const handleCountingCompleted = () => {
+    const completedTasks = tasks.filter((task) => task.completed).length;
+    setTotalCompleted(completedTasks);
+  };
+
+  useEffect(() => {
+    handleCountingCompleted();
+  }, [tasks]);
+
   return (
     <>
       <div className="util">
         <div className="select-all">
           <input type="checkbox" checked={isChecked} onChange={handleChange} />
-          <span>4 selected</span>
+          <span>{totalCompleted} completed</span>
         </div>
         <div className="sorting">
           <select>

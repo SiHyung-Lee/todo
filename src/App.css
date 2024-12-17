@@ -160,6 +160,7 @@ body {
 }
 .select-all span {
   font-size: 11px;
+  text-transform: uppercase;
 }
 .sorting {
   display: flex;
@@ -172,6 +173,7 @@ body {
   border: none;
   background-color: transparent;
   font-size: 11px;
+  text-transform: uppercase;
 }
 /* //task-util */
 
