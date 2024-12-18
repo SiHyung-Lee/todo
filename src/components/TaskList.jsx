@@ -8,6 +8,7 @@ const TaskList = ({
   handleDeleteTask,
   handleToggleCompletion,
   handleToggleAllCompletion,
+  handleSorting,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [totalCompleted, setTotalCompleted] = useState(0);
@@ -35,7 +36,7 @@ const TaskList = ({
           <span>{totalCompleted} completed</span>
         </div>
         <div className="sorting">
-          <select className="hgi-stroke hgi-sorting-05">
+          <select onChange={handleSorting}>
             <option value="" disabled selected>
               Sorting
             </option>

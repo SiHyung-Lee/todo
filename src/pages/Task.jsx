@@ -65,6 +65,19 @@ const Task = () => {
     );
   };
 
+  const handleSorting = (event) => {
+    const sortType = event.target.value;
+
+    console.log(sortType);
+    if (sortType === "all") {
+      return tasks;
+    } else if (sortType === "pending") {
+      tasks.filter((task) => !task.completed);
+    } else if (sortType === "completed") {
+      tasks.filter((task) => task.completed);
+    }
+  };
+
   useEffect(() => {
     console.log(tasks);
   }, [tasks]);
@@ -79,6 +92,7 @@ const Task = () => {
         handleDeleteTask={handleDeleteTask}
         handleToggleCompletion={handleToggleCompletion}
         handleToggleAllCompletion={handleToggleAllCompletion}
+        handleSorting={handleSorting}
       />
     </>
   );
