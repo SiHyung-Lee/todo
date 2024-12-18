@@ -245,6 +245,7 @@ body {
     border: none;
     background: none;
     cursor: pointer;
+    color: #000;
 }
 
 .completed-checkbox {
