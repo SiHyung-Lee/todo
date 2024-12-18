@@ -200,6 +200,7 @@ body {
 
 .sorting svg {
     width: 7px;
+    opacity: 0.7;
 }
 
 /* //task-util */
