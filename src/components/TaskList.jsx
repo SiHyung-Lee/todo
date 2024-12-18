@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import TaskItem from "./TaskItem.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSort } from "@fortawesome/free-solid-svg-icons";
 
 const TaskList = ({
   tasks,
@@ -38,6 +40,7 @@ const TaskList = ({
             <option value="pending">Pending</option>
             <option value="completed">Completed</option>
           </select>
+          <FontAwesomeIcon icon={faSort} />
         </div>
       </div>
       <div className="tasks">

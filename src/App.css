@@ -182,7 +182,7 @@ body {
 
 .sorting {
     display: flex;
-    justify-content: end;
+    align-items: center;
     margin-bottom: 10px;
 }
 
@@ -190,9 +190,16 @@ body {
     height: 26px;
     padding: 0;
     border: none;
-    background-color: transparent;
     font-size: 11px;
     text-transform: uppercase;
+    color: #000;
+    appearance: none;
+    background-color: #fff;
+    outline: none;
+}
+
+.sorting svg {
+    width: 7px;
 }
 
 /* //task-util */
@@ -230,9 +237,6 @@ body {
     font-size: 16px;
     cursor: pointer;
     text-transform: uppercase;
-}
-
-.tasks {
 }
 
 .task {
