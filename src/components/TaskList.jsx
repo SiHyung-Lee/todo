@@ -9,6 +9,7 @@ const TaskList = ({
   handleToggleCompletion,
   handleToggleAllCompletion,
   handleSorting,
+  sortType,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [totalCompleted, setTotalCompleted] = useState(0);
@@ -32,19 +33,31 @@ const TaskList = ({
     <>
       <div className="util">
         <div className="select-all">
-          <input type="checkbox" checked={isChecked} onChange={handleChange} />
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleChange}
+          />
           <span>{totalCompleted} completed</span>
         </div>
         <div className="sorting">
-          <select onChange={handleSorting}>
-            <option value="" disabled selected>
+          <select
+            value={sortType}
+            onChange={(event) => handleSorting(event.target.value)}>
+            <option
+              value=""
+              disabled
+              selected>
               Sorting
             </option>
             <option value="all">All</option>
             <option value="pending">Pending</option>
             <option value="completed">Completed</option>
           </select>
-          <ChevronsUpDown size={14} strokeWidth={2} />
+          <ChevronsUpDown
+            size={14}
+            strokeWidth={2}
+          />
         </div>
       </div>
       <div className="tasks">

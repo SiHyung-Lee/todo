@@ -16,7 +16,7 @@ const initialTasks = [
   {
     id: 2,
     text: "Develop ToDo list app",
-    completed: false,
+    completed: true,
   },
   {
     id: 3,
@@ -27,6 +27,8 @@ const initialTasks = [
 
 const Task = () => {
   const [tasks, setTasks] = useState(initialTasks);
+  const [sortType, setSortType] = useState("all");
+
   const handleAddTask = (newTask) => {
     setTasks([...tasks, newTask]);
   };
@@ -42,7 +44,7 @@ const Task = () => {
           return { ...task, text: updateText };
         }
         return task;
-      }),
+      })
     );
   };
 
@@ -53,7 +55,7 @@ const Task = () => {
           return { ...task, completed: !task.completed };
         }
         return task;
-      }),
+      })
     );
   };
 
@@ -61,22 +63,22 @@ const Task = () => {
     setTasks((prevList) =>
       prevList.map((task) => {
         return { ...task, completed: isChecked };
-      }),
+      })
     );
   };
 
-  const handleSorting = (event) => {
-    const sortType = event.target.value;
-
-    console.log(sortType);
-    if (sortType === "all") {
-      return tasks;
-    } else if (sortType === "pending") {
-      tasks.filter((task) => !task.completed);
-    } else if (sortType === "completed") {
-      tasks.filter((task) => task.completed);
-    }
+  const handleSorting = (type) => {
+    setSortType(type);
   };
+  const sortedTasks = tasks.filter((task) => {
+    if (sortType === "all") {
+      return task;
+    } else if (sortType === "pending") {
+      return !task.completed;
+    } else if (sortType === "completed") {
+      return task.completed;
+    }
+  });
 
   useEffect(() => {
     console.log(tasks);
@@ -87,12 +89,13 @@ const Task = () => {
       <h2 className="app-title">To-Do List</h2>
       <TaskInput handleAddTask={handleAddTask} />
       <TaskList
-        tasks={tasks}
+        tasks={sortedTasks}
         handleUpdateTaskText={handleUpdateTaskText}
         handleDeleteTask={handleDeleteTask}
         handleToggleCompletion={handleToggleCompletion}
         handleToggleAllCompletion={handleToggleAllCompletion}
         handleSorting={handleSorting}
+        sortType={sortType}
       />
     </>
   );
