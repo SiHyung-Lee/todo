@@ -36,6 +36,10 @@ const TaskList = ({
         </div>
         <div className="sorting">
           <select className="hgi-stroke hgi-sorting-05">
+            <option value="" disabled selected>
+              Sorting
+            </option>
+            <option value="all">All</option>
             <option value="pending">Pending</option>
             <option value="completed">Completed</option>
           </select>
