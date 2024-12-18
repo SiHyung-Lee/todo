@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import TaskItem from "./TaskItem.jsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSort } from "@fortawesome/free-solid-svg-icons";
+import { ChevronsUpDown } from "lucide-react";
 
 const TaskList = ({
   tasks,
@@ -36,11 +35,11 @@ const TaskList = ({
           <span>{totalCompleted} completed</span>
         </div>
         <div className="sorting">
-          <select>
+          <select className="hgi-stroke hgi-sorting-05">
             <option value="pending">Pending</option>
             <option value="completed">Completed</option>
           </select>
-          <FontAwesomeIcon icon={faSort} />
+          <ChevronsUpDown size={14} strokeWidth={2} />
         </div>
       </div>
       <div className="tasks">

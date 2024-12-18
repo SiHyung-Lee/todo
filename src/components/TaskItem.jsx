@@ -1,10 +1,5 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTrashCan,
-  faSquareCheck,
-  faPenToSquare,
-} from "@fortawesome/free-regular-svg-icons";
+import { Trash2, ClipboardPen, SquareCheckBig } from "lucide-react";
 
 const TaskItem = ({
   task: { id, text, completed },
@@ -39,7 +34,7 @@ const TaskItem = ({
             }}
             className="task-update"
           >
-            <FontAwesomeIcon icon={faSquareCheck} />
+            <SquareCheckBig size={14} strokeWidth={2} />
           </button>
         </>
       ) : (
@@ -50,7 +45,7 @@ const TaskItem = ({
             onClick={() => setupdate(true)}
             className="task-change"
           >
-            <FontAwesomeIcon icon={faPenToSquare} />
+            <ClipboardPen size={14} strokeWidth={2} />
           </button>
         </>
       )}
@@ -60,7 +55,7 @@ const TaskItem = ({
         onClick={() => handleDeleteTask(id)}
         className="task-delete"
       >
-        <FontAwesomeIcon icon={faTrashCan} />
+        <Trash2 size={14} strokeWidth={2} />
       </button>
     </div>
   );
