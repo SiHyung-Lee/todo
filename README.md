@@ -110,7 +110,3 @@ src/
 3. 변경사항을 커밋합니다 (`git commit -m 'Add some AmazingFeature'`)
 4. 브랜치에 푸시합니다 (`git push origin feature/AmazingFeature`)
 5. Pull Request를 생성합니다
-
-## 라이선스
-
-MIT License
