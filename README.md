@@ -111,29 +111,6 @@ src/
 4. 브랜치에 푸시합니다 (`git push origin feature/AmazingFeature`)
 5. Pull Request를 생성합니다
 
-## 브라우저 지원
-
-- Chrome (최신 2개 버전)
-- Firefox (최신 2개 버전)
-- Safari (최신 2개 버전)
-- Edge (최신 2개 버전)
-
 ## 라이선스
 
 MIT License
-
-## 문의
-
-프로젝트에 대한 문의나 이슈는 GitHub Issues를 통해 제기해 주세요.
-
-## 업데이트 내역
-
-### v1.1.0 (2024-03-20)
-
-- 드래그 앤 드롭 기능 추가
-- 다크모드 지원
-- 성능 최적화
-
-### v1.0.0 (2024-03-01)
-
-- 최초 릴리즈
