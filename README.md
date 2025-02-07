@@ -94,11 +94,3 @@ src/
 ├── services/     # API 통신 및 외부 서비스
 └── assets/        # 이미지, 폰트 등 정적 파일
 ```
-
-## 성능 최적화
-
-- React.memo를 통한 불필요한 리렌더링 방지
-- Code Splitting을 통한 초기 로딩 최적화
-- 이미지 최적화 및 지연 로딩 적용
-- 웹 폰트 최적화
-- Service Worker를 통한 오프라인 지원
